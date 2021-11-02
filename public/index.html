@@ -9,6 +9,60 @@
   <div>
     <h1>Families</h1>
     <p class="first">This is the families tool.</p>
+    <svg id="picture" height="400" width="800" style="border: 1px black solid;" ></svg>
   </div>
+  <script>
+  const svg = document.getElementById('picture');
+  // variable for the namespace
+  const svgns = "http://www.w3.org/2000/svg";
+  // make a simple rectangle
+  const acrossCount = [];
+
+  function drawDescendant(generation,gender) {
+    let newRect = document.createElementNS(svgns, "rect");
+    const h = 40;
+    const w = 100;
+    const border = 5;
+    const spacing = 20;
+
+    const down = border + generation * h + (generation - 1)* spacing;
+    if (acrossCount[generation] === undefined) {
+      acrossCount[generation] = 0;
+    }
+    const across = border + acrossCount[generation] * w + acrossCount[generation] * spacing;
+    acrossCount[generation] += 1;
+    newRect.setAttribute("x", across);
+    newRect.setAttribute("y", down);
+    newRect.setAttribute("width", w);
+    newRect.setAttribute("height", h);
+    const color = gender === 'Male' ? 'lightblue' : 'pink';
+    const bgcolor = gender === 'Male' ? 'blue' : 'red';
+    newRect.setAttribute("fill", color);
+    newRect.setAttribute("stroke", bgcolor);
+    svg.appendChild(newRect);
+    console.log(`adding rect: {$across}`);
+  }
+
+  drawDescendant(3,"Male");
+  drawDescendant(2,"Female");
+  drawDescendant(1,"Male");
+  drawDescendant(3,"Female");
+  drawDescendant(2,"Female");
+  drawDescendant(3,"Female");
+  drawDescendant(2,"Male");
+  drawDescendant(3,"Male");
+  drawDescendant(4,"Female");
+
+  // append the new rectangle to the svg
+
+// <rect x="0" y="0" width="20" height="20" fill="lightblue" />
+// <rect x="10" y="20" width="20" height="20" fill="pink" />
+// <text x="5" y="30">A nice rectangle</text>
+// <line x1="0" y1="0" x2="100" y2="100" stroke="#529fca" />
+
+
+
+
+  </script>
 </body>
 </html>
