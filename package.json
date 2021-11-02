@@ -1,0 +1,36 @@
+{
+  "name": "families",
+  "version": "1.0.0",
+  "description": "A family tree generator toy",
+  "main": "index.js",
+  "author": "Richard Dyce <github@dyce.com>",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "faker": "^5.5.3",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "jest": "^27.3.1",
+    "nodemon": "^2.0.14",
+    "prettier": "^2.4.1",
+    "prettier-eslint": "^13.0.0"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "printWidth": 80,
+    "semi": true,
+    "useTabs": false,
+    "singleQuote": true,
+    "jsxSingleQuote:": true,
+    "bracketSpacing": true,
+    "arrowParens": "avoid"
+  },
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "jest",
+    "start": "node ./index.js"
+  }
+}
