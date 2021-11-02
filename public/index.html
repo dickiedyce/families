@@ -24,11 +24,11 @@
     const border = 5;
     const spacing = 20;
 
-    const down = border + generation * h + (generation - 1)* spacing;
+    const down = border + generation *( h + spacing);
     if (acrossCount[generation] === undefined) {
       acrossCount[generation] = 0;
     }
-    const across = border + acrossCount[generation] * w + acrossCount[generation] * spacing;
+    const across = border + acrossCount[generation] * (w + spacing);
     acrossCount[generation] += 1;
 
     let newRect = document.createElementNS(svgns, "rect");
@@ -54,15 +54,18 @@
     console.log(`adding rect: {$across} {$name}`);
   }
 
-  drawDescendant(1,"Male", "Frank");
+  drawDescendant(3,"Male", "Frank");
   drawDescendant(2,"Female", "Alice");
   drawDescendant(2,"Female", "Sheila");
   drawDescendant(2,"Male", "Bob");
-  drawDescendant(3,"Female", "Jane");
-  drawDescendant(3,"Female", "June");
-  drawDescendant(3,"Male", "Dave");
-  drawDescendant(3,"Male", "Harry");
-  drawDescendant(4,"Female", "Isla");
+  drawDescendant(1,"Female", "Jane");
+  drawDescendant(1,"Female", "June");
+  drawDescendant(1,"Male", "Dave");
+  drawDescendant(1,"Male", "Harry");
+  drawDescendant(0,"Female", "Isla");
+  drawDescendant(0,"Male", "Dave");
+  drawDescendant(0,"Male", "Dicky");
+  drawDescendant(0,"Female", "Diane");
 
   // append the new rectangle to the svg
 
