@@ -17,9 +17,13 @@ function ensureDir(directoryName) {
 
 ensureDir('public');
 
+// load routers for /codh and /pdil
+const individual = require('./api/individual');
+
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.get(app.use(express.static(path.join(__dirname, 'public'))));
+app.use('/api/individual', individual);
 
 const port = process.env.PORT || 80;
 server = app.listen(port, () => console.log(`Server running on port {$port}`));
